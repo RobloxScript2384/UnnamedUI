@@ -1,0 +1,171 @@
+local lib = {}
+
+
+function lib:CreateWindow(title,bottomtext)
+	local Gist = Instance.new("ScreenGui")
+	local Main = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local SideBarGlow = Instance.new("ImageLabel")
+	local SideBar = Instance.new("Frame")
+	local TopPiece = Instance.new("Frame")
+	local Title = Instance.new("TextLabel")
+	local BOTTOM = Instance.new("TextLabel")
+	local TabList = Instance.new("ScrollingFrame")
+	local UIListLayout = Instance.new("UIListLayout")
+	local Tabs = Instance.new("Frame")
+
+	Gist.Name = "Gist"
+	Gist.Parent = game.CoreGui
+	Gist.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	Main.Name = "Main"
+	Main.Parent = Gist
+	Main.AnchorPoint = Vector2.new(0.5, 0.5)
+	Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Main.BackgroundTransparency = 0.500
+	Main.BorderSizePixel = 0
+	Main.ClipsDescendants = true
+	Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Main.Size = UDim2.new(0, 800, 0, 600)
+
+	UICorner.Parent = Main
+
+	SideBarGlow.Name = "SideBarGlow"
+	SideBarGlow.Parent = Main
+	SideBarGlow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SideBarGlow.BackgroundTransparency = 1.000
+	SideBarGlow.BorderSizePixel = 0
+	SideBarGlow.Position = UDim2.new(-0.0225000009, 0, -0.0633333325, 0)
+	SideBarGlow.Size = UDim2.new(0, 282, 0, 681)
+	SideBarGlow.Image = "rbxassetid://4996891970"
+	SideBarGlow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+
+	SideBar.Name = "SideBar"
+	SideBar.Parent = Main
+	SideBar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	SideBar.BackgroundTransparency = 0.850
+	SideBar.BorderSizePixel = 0
+	SideBar.Size = UDim2.new(0, 250, 0, 600)
+
+	TopPiece.Name = "TopPiece"
+	TopPiece.Parent = SideBar
+	TopPiece.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	TopPiece.BackgroundTransparency = 0.900
+	TopPiece.BorderSizePixel = 0
+	TopPiece.Size = UDim2.new(0, 250, 0, 120)
+
+	Title.Name = "Title"
+	Title.Parent = TopPiece
+	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Title.BackgroundTransparency = 1.000
+	Title.BorderSizePixel = 0
+	Title.Size = UDim2.new(0, 250, 0, 69)
+	Title.Font = Enum.Font.SourceSans
+	Title.Text = title
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextScaled = true
+	Title.TextSize = 14.000
+	Title.TextWrapped = true
+
+	BOTTOM.Name = "BOTTOM"
+	BOTTOM.Parent = TopPiece
+	BOTTOM.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BOTTOM.BackgroundTransparency = 1.000
+	BOTTOM.BorderSizePixel = 0
+	BOTTOM.Position = UDim2.new(0, 0, 0.474999994, 0)
+	BOTTOM.Size = UDim2.new(0, 250, 0, 41)
+	BOTTOM.Font = Enum.Font.SourceSans
+	BOTTOM.Text = bottomtext
+	BOTTOM.TextColor3 = Color3.fromRGB(185, 185, 185)
+	BOTTOM.TextScaled = true
+	BOTTOM.TextSize = 14.000
+	BOTTOM.TextWrapped = true
+
+	TabList.Name = "TabList"
+	TabList.Parent = SideBar
+	TabList.Active = true
+	TabList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabList.BackgroundTransparency = 1.000
+	TabList.BorderSizePixel = 0
+	TabList.Position = UDim2.new(0, 0, 0.200000003, 0)
+	TabList.Size = UDim2.new(0, 250, 0, 466)
+	TabList.CanvasSize = UDim2.new(0, 0, 0, 0)
+	TabList.ScrollBarThickness = 0
+
+	UIListLayout.Parent = TabList
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.Padding = UDim.new(0.0199999996, 0)
+
+	Tabs.Name = "Tabs"
+	Tabs.Parent = Main
+	Tabs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Tabs.BackgroundTransparency = 1.000
+	Tabs.BorderSizePixel = 0
+	Tabs.Position = UDim2.new(0.330000013, 0, 0.0166666675, 0)
+	Tabs.Size = UDim2.new(0, 530, 0, 579)
+
+
+	coroutine.wrap(ENENMJ_fake_script)()
+	local function FIQQ_fake_script() -- TabList.AutoResize 
+		local script = Instance.new('LocalScript', TabList)
+
+		
+		while wait(0.01) do
+			local Canvas = script.Parent
+			local Constraint = script.Parent.UIListLayout
+			Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y)
+		end
+	end
+	coroutine.wrap(FIQQ_fake_script)()
+
+	local tabs = {}
+
+	function tabs:CreateTab(name)
+		local TabButton = Instance.new("TextButton")
+		local TAB = Instance.new("ScrollingFrame")
+		local UIListLayout_2 = Instance.new("UIListLayout")
+
+		TabButton.Name = name
+		TabButton.Parent = TabList
+		TabButton.BackgroundColor3 = Color3.fromRGB(8, 156, 255)
+		TabButton.BackgroundTransparency = 1.000
+		TabButton.BorderSizePixel = 0
+		TabButton.Size = UDim2.new(0, 250, 0, 50)
+		TabButton.Font = Enum.Font.SourceSans
+		TabButton.Text = name
+		TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TabButton.TextScaled = true
+		TabButton.TextSize = 14.000
+		TabButton.TextWrapped = true
+
+		TAB.Name = name
+		TAB.Parent = Tabs
+		TAB.Active = true
+		TAB.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TAB.BackgroundTransparency = 1.000
+		TAB.BorderSizePixel = 0
+		TAB.Size = UDim2.new(0, 530, 0, 579)
+		TAB.CanvasSize = UDim2.new(0, 0, 0, 0)
+		TAB.ScrollBarThickness = 0
+
+		UIListLayout_2.Parent = TAB
+		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout_2.Padding = UDim.new(0.0199999996, 0)
+
+		local function OYJMBMJ_fake_script() -- TAB.AutoResize 
+			local script = Instance.new('LocalScript', TAB)
+
+			
+			while wait(0.01) do
+				local Canvas = script.Parent
+				local Constraint = script.Parent.UIListLayout
+				Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y)
+			end
+		end
+		coroutine.wrap(OYJMBMJ_fake_script)()
+	end
+	
+	return tabs
+end
+
+return lib
