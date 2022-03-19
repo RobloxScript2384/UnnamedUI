@@ -105,7 +105,6 @@ function lib:CreateWindow(title,bottomtext)
 	Tabs.Size = UDim2.new(0, 530, 0, 579)
 
 
-	coroutine.wrap(ENENMJ_fake_script)()
 	local function FIQQ_fake_script() -- TabList.AutoResize 
 		local script = Instance.new('LocalScript', TabList)
 
