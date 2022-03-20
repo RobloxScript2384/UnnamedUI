@@ -179,6 +179,62 @@ function lib:CreateWindow(title,bottomtext)
 			end
 		end
 		coroutine.wrap(OYJMBMJ_fake_script)()
+
+		local objects = {}
+
+		function objects:CreateButton(name, callback)
+
+			local ButtonTemplate = Instance.new("TextButton")
+			local SmallCircle = Instance.new("Frame")
+			local SmallCircleCorner = Instance.new("UICorner")
+			local ButtonCorner = Instance.new("UICorner")
+			local Title = Instance.new("TextLabel")
+
+			ButtonTemplate.Name = "ButtonTemplate"
+			ButtonTemplate.Parent = TabBeingCreated
+			ButtonTemplate.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			ButtonTemplate.BackgroundTransparency = 0.750
+			ButtonTemplate.BorderSizePixel = 0
+			ButtonTemplate.Size = UDim2.new(0, 526, 0, 60)
+			ButtonTemplate.Font = Enum.Font.SourceSans
+			ButtonTemplate.Text = ""
+			ButtonTemplate.TextColor3 = Color3.fromRGB(0, 0, 0)
+			ButtonTemplate.TextSize = 14.000
+
+			SmallCircle.Name = "SmallCircle"
+			SmallCircle.Parent = ButtonTemplate
+			SmallCircle.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
+			SmallCircle.BorderSizePixel = 0
+			SmallCircle.Position = UDim2.new(0.0285171103, 0, 0.300000012, 0)
+			SmallCircle.Size = UDim2.new(0, 24, 0, 24)
+
+			SmallCircleCorner.CornerRadius = UDim.new(1, 8)
+			SmallCircleCorner.Name = "SmallCircleCorner"
+			SmallCircleCorner.Parent = SmallCircle
+
+			ButtonCorner.Name = "ButtonCorner"
+			ButtonCorner.Parent = ButtonTemplate
+
+			Title.Name = "Title"
+			Title.Parent = ButtonTemplate
+			Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Title.BackgroundTransparency = 1.000
+			Title.BorderSizePixel = 0
+			Title.Position = UDim2.new(0.0912547559, 0, 0, 0)
+			Title.Size = UDim2.new(0, 478, 0, 60)
+			Title.Font = Enum.Font.SourceSans
+			Title.Text = ""
+			Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Title.TextSize = 40.000
+			Title.TextXAlignment = Enum.TextXAlignment.Left
+
+			ButtonTemplate.MouseButton1Down:Connect(function()
+				pcall(callback)
+			end)
+
+		end
+
+		return objects
 	end
 	
 	return tabs
