@@ -163,7 +163,7 @@ function lib:CreateWindow(title,bottomtext)
 			for l,tablistv in pairs(TabList:GetChildren()) do
 				if tablistv.Name == "Tab" then
 					TweenService:Create(tablistv,TweenInfo.new(.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
-					TweenService:Create(Tab,TweenInfo.new(.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),{BackgroundTransparency = 0.4}):Play()
+					TweenService:Create(TabButton,TweenInfo.new(.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),{BackgroundTransparency = 0.4}):Play()
 				end
 			end
 		end)
