@@ -223,7 +223,7 @@ function lib:CreateWindow(title,bottomtext)
 			Title.Position = UDim2.new(0.0912547559, 0, 0, 0)
 			Title.Size = UDim2.new(0, 478, 0, 60)
 			Title.Font = Enum.Font.SourceSans
-			Title.Text = ""
+			Title.Text = name
 			Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 			Title.TextSize = 40.000
 			Title.TextXAlignment = Enum.TextXAlignment.Left
