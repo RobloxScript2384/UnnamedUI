@@ -1,5 +1,6 @@
 local lib = {}
 local TweenService = game:GetService("TweenService")
+local DefaultGrey = Color3.fromRGB(115, 115, 115)
 
 
 function lib:CreateWindow(title,bottomtext)
@@ -230,6 +231,94 @@ function lib:CreateWindow(title,bottomtext)
 
 			ButtonTemplate.MouseButton1Down:Connect(function()
 				pcall(callback)
+			end)
+
+		end
+
+		function objects:CreateToggle(name, callback)
+
+			local Toggled = false
+
+			local ToggleTemplate = Instance.new("TextButton")
+			local SmallCircle = Instance.new("Frame")
+			local SmallCircleCorner = Instance.new("UICorner")
+			local ToggleCorner = Instance.new("UICorner")
+			local Title = Instance.new("TextLabel")
+			local ToggleFrame = Instance.new("Frame")
+			local ToggleFrameCorner = Instance.new("UICorner")
+			local ToggleCircle = Instance.new("Frame")
+			local ToggleCircleCorner = Instance.new("UICorner")
+
+			ToggleTemplate.Name = "ToggleTemplate"
+			ToggleTemplate.Parent = TabBeingCreated
+			ToggleTemplate.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			ToggleTemplate.BackgroundTransparency = 0.750
+			ToggleTemplate.BorderSizePixel = 0
+			ToggleTemplate.Size = UDim2.new(0, 526, 0, 60)
+			ToggleTemplate.Font = Enum.Font.SourceSans
+			ToggleTemplate.Text = ""
+			ToggleTemplate.TextColor3 = Color3.fromRGB(0, 0, 0)
+			ToggleTemplate.TextSize = 14.000
+
+			SmallCircle.Name = "SmallCircle"
+			SmallCircle.Parent = ToggleTemplate
+			SmallCircle.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
+			SmallCircle.BorderSizePixel = 0
+			SmallCircle.Position = UDim2.new(0.0285171103, 0, 0.300000012, 0)
+			SmallCircle.Size = UDim2.new(0, 24, 0, 24)
+
+			SmallCircleCorner.CornerRadius = UDim.new(1, 8)
+			SmallCircleCorner.Name = "SmallCircleCorner"
+			SmallCircleCorner.Parent = SmallCircle
+
+			ToggleCorner.Name = "ToggleCorner"
+			ToggleCorner.Parent = ToggleTemplate
+
+			Title.Name = "Title"
+			Title.Parent = ToggleTemplate
+			Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Title.BackgroundTransparency = 1.000
+			Title.BorderSizePixel = 0
+			Title.Position = UDim2.new(0.0912547559, 0, 0, 0)
+			Title.Size = UDim2.new(0, 384, 0, 60)
+			Title.Font = Enum.Font.SourceSans
+			Title.Text = "Kill all"
+			Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Title.TextSize = 40.000
+			Title.TextXAlignment = Enum.TextXAlignment.Left
+
+			ToggleFrame.Name = "ToggleFrame"
+			ToggleFrame.Parent = ToggleTemplate
+			ToggleFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			ToggleFrame.BorderSizePixel = 0
+			ToggleFrame.Position = UDim2.new(0.844106436, 0, 0.300000012, 0)
+			ToggleFrame.Size = UDim2.new(0, 65, 0, 24)
+
+			ToggleFrameCorner.CornerRadius = UDim.new(1, 8)
+			ToggleFrameCorner.Name = "ToggleFrameCorner"
+			ToggleFrameCorner.Parent = ToggleFrame
+
+			ToggleCircle.Name = "ToggleCircle"
+			ToggleCircle.Parent = ToggleFrame
+			ToggleCircle.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
+			ToggleCircle.BorderSizePixel = 0
+			ToggleCircle.Position = UDim2.new(0, 0, -0.208333328, 0)
+			ToggleCircle.Size = UDim2.new(0, 33, 0, 33)
+
+			ToggleCircleCorner.CornerRadius = UDim.new(1, 8)
+			ToggleCircleCorner.Name = "ToggleCircleCorner"
+			ToggleCircleCorner.Parent = ToggleCircle
+
+			ToggleTemplate.MouseButton1Down:Connect(function()
+				if Toggled == false then
+					ToggleCircle:TweenPosition(UDim2.new(0.492, 0,-0.208, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Linear, .3, true)
+					TweenService:Create(ToggleCircle,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(8, 156, 255)}):Play()
+				else
+					ToggleCircle:TweenPosition(UDim2.new(0, 0,-0.208, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Linear, .3, true)
+					TweenService:Create(ToggleCircle,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = DefaultGrey}):Play()
+				end
+				Toggled = not Toggled
+				pcall(callback, Toggled)
 			end)
 
 		end
