@@ -183,6 +183,24 @@ function lib:CreateWindow(title,bottomtext)
 
 		local objects = {}
 
+		function objects:CreateLine()
+
+			local LineTemplate = Instance.new("Frame")
+			local LineCorner = Instance.new("UICorner")
+
+			LineTemplate.Name = "LineTemplate"
+			LineTemplate.Parent = TabBeingCreated
+			LineTemplate.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			LineTemplate.BackgroundTransparency = 0.750
+			LineTemplate.BorderSizePixel = 0
+			LineTemplate.Position = UDim2.new(0.00377358496, 0, 0.417512923, 0)
+			LineTemplate.Size = UDim2.new(0, 526, 0, 15)
+
+			LineCorner.Name = "LineCorner"
+			LineCorner.Parent = LineTemplate
+			
+		end
+
 		function objects:CreateButton(name, callback)
 
 			local ButtonTemplate = Instance.new("TextButton")
